@@ -1,4 +1,4 @@
-AccessModifierOffset: -4
+AccessModifierOffset: 0
 AlignAfterOpenBracket: DontAlign
 AlignArrayOfStructures: None
 AlignConsecutiveAssignments: None
@@ -35,62 +35,48 @@ BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: AfterColon
-# AlignConsecutiveMembers: None
-# AlignConsecutiveParameters: None
-# AlignConsecutiveStatements: None
-# AlignEscapedNewlines: DontAlign
-# AlignTrailingComments: DontAlign
-# AllowShortIfStatementsOnASingleLine: Inline
-# AllowShortFunctionsOnASingleLine: Inline
-# AllowShortLoopsOnASingleLine: Inline
-# AlwaysBreakAfterDefinitionReturnType: None
-# AlwaysBreakAfterReturnType: None
-# AlwaysBreakBeforeMultilineStrings: false
-# AlwaysBreakTemplateDeclarations: false
-# BinPackArguments: false
-# BinPackParameters: false
-# BreakBeforeBinaryOperators: NonAssignment
-# BreakBeforeBraces: Attach
-# BreakBeforeTernaryOperators: true
-# BreakConstructorInitializers: BeforeComma
-# BreakInheritanceList: BeforeColon
-# BreakStringLiterals: false
-# ColumnLimit: 80
-# CommentPragmas: '^ IWYU pragma:'
-# ConstructorInitializerAllOnOneLineOrOnePerLine: false
-# ConstructorInitializerIndentWidth: 4
-# ContinuationIndentWidth: 4
-# DerivePointerAlignment: false
-# DisableFormat: false
-# ExperimentalAutoDetectBinPacking: false
-# FixNamespaceComments: true
-# IndentCaseLabels: true
-# IndentWidth: 4
-# IndentWrappedFunctionNames: false
-# JavaScriptQuotes: Leave
-# JavaScriptWrapImports: true
-# KeepEmptyLinesAtTheStartOfBlocks: false
-
-# AllowShortIfStatementsOnASingleLine: AllIfsAndElse
-# AllowShortFunctionsOnASingleLine: Empty
-# AlignTrailingComments: Never
-# AlwaysBreakTemplateDeclarations: true
-
-# ConstructorInitializerIndentWidth: 4
-# ContinuationIndentWidth: 4
-
-# BreakBeforeBraces: Allman
-# BinPackParameters: false
-# BinPackArguments: false
-# BreakConstructorInitializers: AfterColon
-# BreakBeforeTernaryOperators: true
-# BreakBeforeBinaryOperators: All
-# BraceWrapping:
-#     SplitEmptyFunction: false
-
-# IndentWidth: 4
-# IndentCaseLabels: true
-# IndentAccessModifiers: false
-
-# PointerAlignment: Left
-# NamespaceIndentation: All
+BreakFunctionDefinitionParameters: false
+BreakInheritanceList: AfterColon
+BreakTemplateDeclarations: Yes
+ColumnLimit: 120
+CompactNamespaces: false
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+PointerAlignment: Right
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: Never
+IncludeBlocks: Regroup
+IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentExternBlock: AfterExternBlock
+IndentGotoLabels: false
+IndentRequires: false
+IndentWidth: 4
+IndentWrappedFunctionNames: true
+InsertBraces: false
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All
+ObjCBlockIndentWidth: 4
+PackConstructorInitializers: CurrentLine
+RequiresClausePosition: OwnLine
+SeparateDefinitionBlocks: Always
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: true
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: Never
+SpacesInSquareBrackets: false
+TabWidth: 4
+TableGenBreakInsideDAGArg: BreakAll
