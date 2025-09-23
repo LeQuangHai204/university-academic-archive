@@ -1,0 +1,54 @@
+[OPTIONS]
+
+policy_out: DROP
+enable: 1
+policy_in: DROP
+
+[ALIASES]
+
+anywhere 0.0.0.0/0 # Anywhere IPv4
+home_network 192.168.0.0/23 # Hosts from home network
+local_proxmox 192.168.0.0/26 # Including VMs, CTs and this
+localhost 192.168.0.4 # This proxmox machine
+vpn_tplink 10.8.0.0/24 # Hosts that connect via openvpn on tplink
+
+[IPSET me] # Including addresses from home WiFi and via VPN
+
+dc/home_network
+dc/vpn_tplink
+
+[IPSET notme] # Hosts from external origin
+
+!dc/home_network
+!dc/vpn_tplink
+
+[IPSET notvpn] # Exclude local network for enhanced security
+
+!dc/vpn_tplink
+
+[RULES]
+
+IN ACCEPT -i vmbr0 -source dc/vpn_tplink -dest dc/local_proxmox -p tcp -dport 8006 -sport 1024:65535 -log nolog # Allow homeserver access from remote via vpn
+GROUP vpn-ssh-allow -i vmbr0 # Allow ssh connection from remote via vpn
+GROUP out-allow -i vmbr0 # Allow outbound traffic establishment
+
+[group all-allow] # Allow all trafic for testing purpose
+
+OUT ACCEPT -log nolog
+IN ACCEPT -log nolog
+
+[group http-allow] # Allow port 80 access from client
+
+IN ACCEPT -source +dc/me -dest dc/local_proxmox -p tcp -dport 80 -sport 1024:65535 -log nolog
+
+[group out-allow] # Allow machine to actively establishing connection
+
+OUT ACCEPT -source dc/local_proxmox -dest dc/anywhere -log nolog
+
+[group vm-ssh-allow] # Allow remote connection via SSH
+
+IN ACCEPT -source +dc/me -dest dc/local_proxmox -p tcp -dport 22 -sport 1024:65535 -log info
+
+[group vpn-ssh-allow] # Allow remote connection via VPN only
+
+IN ACCEPT -source dc/vpn_tplink -dest dc/local_proxmox -p tcp -dport 22 -sport 1024:65535 -log info
